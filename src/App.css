@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --mainColor: #f57224;
+  --whiteColor: #ffffff;
+  --blackColor: #000000;
+  --lightDark: #222222;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: "Lato", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: 100%;
+  padding: 0 100px;
+}
+
+/* Navbar Styles */
+nav {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 100px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul a {
+  text-decoration: none;
+}
+
+.right a {
+  font-weight: bold;
+  color: var(--mainColor);
+  font-size: 25px;
+}
+
+.shopping-cart i {
+  font-size: 20px;
+  display: inline-block;
+  color: var(--lightDark);
+  margin-right: 15px;
+}
+
+.cart-count {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: var(--mainColor);
+  color: var(--whiteColor);
+  border-radius: 50%;
+  line-height: 35px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Header Styles */
+header {
+  width: 100%;
+  background: url("/src/assets/rose.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 250px;
+}
+
+.header-text {
+  color: #ffffff;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* Products */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.product-item {
+  margin: 10px 5px;
+  position: relative;
+}
+
+.product-details {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.add-to-cart {
+  background-color: var(--mainColor);
+  color: var(--whiteColor);
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #f56715;
+}
+
+.product-item .hot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  padding: 5px;
+  color: #ffffff;
+  background-color: red;
+}
+
+.product-item .new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  padding: 5px;
+  color: #ffffff;
+  background-color: orange;
 }
