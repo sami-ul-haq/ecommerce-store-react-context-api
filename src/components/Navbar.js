@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../GlobalState/CartContext";
 
 const Navbar = () => {
+  const { qty } = useContext(CartContext);
   return (
     <nav>
       <ul className="right">
         <li>
-          <a href="/">Online Store</a>
+          <Link to="/">Online Store</Link>
         </li>
       </ul>
       <ul className="left">
         <li>
-          <a href="/">
+          <Link to="/cart">
             <span className="shopping-cart">
               <i className="fas fa-cart-plus"></i>
-              <span className="cart-count">0</span>
+              <span className="cart-count">{qty}</span>
             </span>
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

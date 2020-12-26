@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
+import { CartContext } from "../GlobalState/CartContext";
 import { ProductsContext } from "../GlobalState/ProductsContext";
 
 const Products = () => {
-  const data = useContext(ProductsContext);
+  const { dispatch } = useContext(CartContext);
+  const products = useContext(ProductsContext);
+
   return (
     <div className="products container">
-      {data.map((product) => (
-        <div className="product-item" key={product.id}>
+      {products.map((product) => (
+        <div className="product-items" key={product.id}>
           <div className="product-image">
             <img src={product.image} alt="not-found" />
           </div>
@@ -14,7 +17,18 @@ const Products = () => {
             <h3>{product.name}</h3>
             <p>{product.price}</p>
           </div>
-          <div className="add-to-cart">Add To Cart</div>
+          <div
+            className="add-to-cart"
+            onClick={() => {
+              dispatch({
+                type: "ADD_TO_CART",
+                id: product.id,
+                product,
+              });
+            }}
+          >
+            Add To Cart
+          </div>
           {product.status === "hot" ? (
             <div className="hot">HOT</div>
           ) : (
