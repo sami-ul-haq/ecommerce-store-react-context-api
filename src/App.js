@@ -11,7 +11,7 @@ import ProductsContextProvider from "./GlobalState/ProductsContext";
 
 const App = () => {
   return (
-    <div>
+    <>
       <ProductsContextProvider>
         <CartContextProvider>
           <BrowserRouter>
@@ -25,7 +25,7 @@ const App = () => {
           </BrowserRouter>
         </CartContextProvider>
       </ProductsContextProvider>
-    </div>
+    </>
   );
 };
 

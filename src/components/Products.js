@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { CartContext } from "../GlobalState/CartContext";
-import { ProductsContext } from "../GlobalState/ProductsContext";
+import { cartContext } from "../GlobalState/CartContext";
+import { productsContext } from "../GlobalState/ProductsContext";
 
 const Products = () => {
-  const { dispatch } = useContext(CartContext);
-  const products = useContext(ProductsContext);
+  const { dispatch } = useContext(cartContext);
+  const products = useContext(productsContext);
 
   return (
     <div className="products container">

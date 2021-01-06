@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer } from "react";
+import { ProductReducer } from "./ProductReducer";
 
 import dslr from "../assets/dslr.jpg";
 import computer from "../assets/computer.jpg";
@@ -20,15 +21,15 @@ const myProducts = [
   { id: 8, name: "Tablet", price: 200, image: tablet, status: "new" },
 ];
 
-export const ProductsContext = createContext();
+export const productsContext = createContext();
 
 const ProductsContextProvider = ({ children }) => {
-  const [products] = useState(myProducts);
+  const [state] = useReducer(ProductReducer, myProducts);
 
   return (
-    <ProductsContext.Provider value={[...products]}>
+    <productsContext.Provider value={[...state]}>
       {children}
-    </ProductsContext.Provider>
+    </productsContext.Provider>
   );
 };
 

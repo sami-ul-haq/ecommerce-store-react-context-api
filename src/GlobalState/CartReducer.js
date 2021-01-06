@@ -10,7 +10,7 @@ export const CartReducer = (state, action) => {
 
   switch (action.type) {
     case "ADD_TO_CART":
-      const check = shoppingCart.find((product) => product.id === action.id);
+      const check = shoppingCart.find((cart) => cart.id === action.id);
       if (check) {
         return state;
       } else {
@@ -19,47 +19,50 @@ export const CartReducer = (state, action) => {
         updatedQty = qty + 1;
         updatedPrice = totalPrice + product.price;
         return {
-          shoppingCart: [...shoppingCart, product],
+          shoppingCart: [product, ...shoppingCart],
           totalPrice: updatedPrice,
           qty: updatedQty,
         };
       }
 
     case "INCREMENT":
-      product = action.product;
+      product = shoppingCart.find((product) => product.id === action.id);
+      index = shoppingCart.findIndex((prod) => prod.id === action.id);
       product.qty = product.qty + 1;
       updatedPrice = totalPrice + product.price;
       updatedQty = qty + 1;
-      index = shoppingCart.findIndex((prod) => prod.id === action.id);
       shoppingCart[index] = product;
       return {
-        ...state,
-        shoppingCart: [...shoppingCart, product],
+        shoppingCart: [...shoppingCart],
         totalPrice: updatedPrice,
         qty: updatedQty,
       };
 
     case "DECREMENT":
-      product = action.product;
+      product = shoppingCart.find((product) => product.id === action.id);
+      index = shoppingCart.findIndex((prod) => prod.id === action.id);
       if (product.qty > 1) {
         product.qty = product.qty - 1;
         updatedPrice = totalPrice - product.price;
         updatedQty = qty - 1;
-        index = shoppingCart.findIndex((prod) => prod.id === action.id);
         shoppingCart[index] = product;
         return {
-          ...state,
-          shoppingCart: [...shoppingCart, product],
+          shoppingCart: [...shoppingCart],
           totalPrice: updatedPrice,
           qty: updatedQty,
         };
       } else {
-        return state;
+        return {
+          shoppingCart: [...shoppingCart],
+          totalPrice: totalPrice,
+          qty: qty,
+        };
       }
 
-    case "DELETE":
-      filtered = shoppingCart.filter((item) => item.id !== action.id);
-      product = action.product;
+    case "DELETE_PRODUCT":
+      console.log("I Am Delete");
+      filtered = shoppingCart.filter((cart) => cart.id !== action.id);
+      product = shoppingCart.find((cart) => cart.id === action.id);
       updatedPrice = totalPrice - product.price * product.qty;
       updatedQty = qty - product.qty;
       return {

@@ -5,7 +5,7 @@ const Banner = () => {
     <div className="container">
       <header>
         <div className="header-text">
-          <h1>Eid Ke Rung Apno Ke Sang</h1>
+          <h1>Place Where EveryThig Is Available</h1>
           <p>Enjoy Online Shopping With Us</p>
         </div>
       </header>

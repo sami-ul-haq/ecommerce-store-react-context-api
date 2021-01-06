@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import { CartReducer } from "./CartReducer";
 
-export const CartContext = createContext();
+export const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, {
@@ -10,9 +10,9 @@ const CartContextProvider = ({ children }) => {
     qty: 0,
   });
   return (
-    <CartContext.Provider value={{ ...state, dispatch }}>
+    <cartContext.Provider value={{ ...state, dispatch }}>
       {children}
-    </CartContext.Provider>
+    </cartContext.Provider>
   );
 };
 
